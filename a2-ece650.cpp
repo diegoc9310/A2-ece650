@@ -203,7 +203,7 @@ private:
          graph.init_matrix(vertex_num);// Assign vertex num
          capture_edges_flag = 1;
       }
-      else { cerr << " Error: set of vertices needs to be more than 1 \n"; }
+      else { cout << " Error: set of vertices needs to be more than 1 \n"; }
 
    }
    void edge_command(string input, size_t space)
@@ -225,8 +225,8 @@ private:
             int var2 = atoi(token2.c_str());
             if (!(graph.add_to_matrix(var1,var2)))
             {
-               cerr << " Error: a vertex in the list is out of bounds or a verex has a path to itself\n";
-               capture_edges_flag = 1;
+               cout << " Error: a vertex in the list is out of bounds or a verex has a path to itself\n";
+               capture_edges_flag = 0;
                break;
             }
 
@@ -237,11 +237,11 @@ private:
       }
       else if (capture_edges_flag == 0) 
       {
-         cerr << " Error: need to assign number of vertex first use command V \n";
+         cout << " Error: need to assign number of vertex first use command V \n";
       }
       else if (capture_edges_flag == 2) 
       {
-         cerr << " Error: Edge list allready captured to enter new list first change the # of vertexes according to the new list \n";
+         cout << " Error: Edge list allready captured to enter new list first change the # of vertexes according to the new list \n";
       }
    
    }
@@ -258,30 +258,30 @@ private:
             int dst = atoi(var2.c_str()); // convert parsed data
             if (!graph.check_out_of_bounds(src, dst))//(src == dst)
             {
-               cerr << " Error: either source or destination are out of bounds\n";//cerr << " Error: cannot search path for itself \n";
+               cout << " Error: either source or destination are out of bounds\n";
 
             }
             else 
             {
-               if (src == dst)//(graph.check_out_of_bounds(src, dst))
+               if (src == dst)
                {
-                  cerr << " Error: cannot search path for itself \n";
+                  cout << " Error: cannot search path for itself \n";
 
                }
                else
                {
                   if (!(graph.Search(src, dst))) // search shortest path
                   {
-                     cerr << " Error: there is no path \n";
+                     cout << " Error: there is no path \n";
                   }
-                  //cerr << " Error: cannot search path for itself \n";//cerr << " Error: either source or destination are out of bounds\n";
+                  
                }
             }
          }
       }
       else 
       {
-         cerr << " Error: Edge list has not been captured \n";
+         cout << " Error: Edge list has not been captured \n";
       }
    }
 
